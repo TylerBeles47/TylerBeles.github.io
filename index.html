@@ -151,8 +151,8 @@
 
         /* Featured Projects Grid */
         .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 25px;
             margin-top: 30px;
         }
@@ -164,7 +164,7 @@
             border-left: 4px solid #64ffda;
             transition: all 0.3s ease;
             border: 1px solid rgba(100, 255, 218, 0.2);
-            height: 100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -401,7 +401,7 @@
             }
             
             .featured-grid {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
             
             .category-nav {
@@ -485,19 +485,21 @@
                 <div class="featured-grid">
                     <div class="project-card clickable-card" data-section="cybersecurity-projects" data-category="blue-team">
                         <div class="project-title">Minecraft RAT Scanner</div>
-                        <div class="project-description" style="min-height: 80px;">
+                        <div class="project-description">
                             Advanced malware detection system for Minecraft mods using machine learning and automated security analysis. Deployed to ECS Security Platform with enterprise-grade infrastructure.
                         </div>
                         
-                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
-                        <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; font-size: 1.1em; color: #b0bec5; height: 150px; display: flex; flex-direction: column; justify-content: flex-start;">
-                            <li>AI-Powered Detection</li>
-                            <li>Real-time Analysis</li>
-                            <li>Decompilation Engine</li>
-                            <li>Threat Intelligence</li>
-                            <li>Web Interface</li>
-                            <li>Enterprise Security</li>
-                        </ul>
+                        <div style="flex-grow: 1;">
+                            <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; font-size: 1.1em; color: #b0bec5;">
+                                <li>AI-Powered Detection</li>
+                                <li>Real-time Analysis</li>
+                                <li>Decompilation Engine</li>
+                                <li>Threat Intelligence</li>
+                                <li>Web Interface</li>
+                                <li>Enterprise Security</li>
+                            </ul>
+                        </div>
                         
                         <h4 style="color: #64ffda; margin-top: 20px; margin-bottom: 10px;">Technologies Used:</h4>
                         <div class="tech-stack" style="margin-bottom: 20px;">
@@ -508,25 +510,27 @@
                             <span class="tech-tag">Scikit-learn</span>
                             <span class="tech-tag">GitHub Actions</span>
                             <span class="tech-tag">AWS Secrets Manager</span>
-                            <span class="tech-tag">Procyon Decompiler</span>
+
                         </div>
                     </div>
 
                     <div class="project-card clickable-card" data-section="cybersecurity-projects" data-category="blue-team">
                         <div class="project-title">Homelab Security Project</div>
-                        <div class="project-description" style="min-height: 80px;">
+                        <div class="project-description">
                             Virtual network security lab implementing pfSense firewall with Snort IDS/IPS integration. Features custom rule creation, penetration testing validation, and comprehensive network monitoring.
                         </div>
                         
-                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
-                        <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; font-size: 1.1em; color: #b0bec5; height: 150px; display: flex; flex-direction: column; justify-content: flex-start;">
-                            <li>pfSense Firewall Configuration</li>
-                            <li>Snort IDS/IPS Integration</li>
-                            <li>Custom Rule Development</li>
-                            <li>Multi-VM Network Architecture</li>
-                            <li>Penetration Testing Validation</li>
-                            <li>Real-time Alert Monitoring</li>
-                        </ul>
+                        <div style="flex-grow: 1;">
+                            <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; font-size: 1.1em; color: #b0bec5;">
+                                <li>pfSense Firewall Configuration</li>
+                                <li>Snort IDS/IPS Integration</li>
+                                <li>Custom Rule Development</li>
+                                <li>Multi-VM Network Architecture</li>
+                                <li>Penetration Testing Validation</li>
+                                <li>Real-time Alert Monitoring</li>
+                            </ul>
+                        </div>
                         
                         <h4 style="color: #64ffda; margin-top: 20px; margin-bottom: 10px;">Technologies Used:</h4>
                         <div class="tech-stack" style="margin-bottom: 20px;">
