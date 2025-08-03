@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Portfolio - Tyler Beles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e6ed;
+            background: linear-gradient(135deg, #0a0e27 0%, #16213e 50%, #1a1a2e 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: #64ffda;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #b0bec5;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: #64ffda;
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a.active {
+            color: #64ffda;
+            background: rgba(100, 255, 218, 0.2);
+        }
+
+        /* Section Styles */
+        .section {
+            display: none;
+            padding-top: 80px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-content h1 {
+            color: #64ffda;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 25px rgba(100, 255, 218, 0.6);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 25px rgba(100, 255, 218, 0.6); }
+            to { text-shadow: 0 0 35px rgba(100, 255, 218, 0.8), 0 0 45px rgba(100, 255, 218, 0.4); }
+        }
+
+        .header-content h2 {
+            color: #bb86fc;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .header-content p {
+            color: #b0bec5;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section h3 {
+            color: #64ffda;
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Featured Projects Grid */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            border-left: 4px solid #64ffda;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-left-color: #bb86fc;
+            border-color: rgba(187, 134, 252, 0.3);
+            transform: translateX(10px);
+        }
+
+        .project-title {
+            color: #64ffda;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-title::before {
+            content: "🎯";
+        }
+
+        .project-description {
+            color: #b0bec5;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            flex-grow: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #bb86fc, #64ffda);
+            color: #0a0e27;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        /* Red team tech tags */
+        .red-team .tech-tag {
+            background: linear-gradient(45deg, #ff4757, #ff6348) !important;
+            color: #0a0e27 !important;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .features-list {
+            color: #b0bec5;
+            margin-left: 20px;
+        }
+
+        .features-list li {
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "⚡";
+            position: absolute;
+            left: -20px;
+            color: #64ffda;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+
+        .skill-category h4 {
+            color: #bb86fc;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            color: #b0bec5;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-category li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #64ffda;
+        }
+
+        .contact-info {
+            text-align: center;
+            color: #b0bec5;
+        }
+
+        .contact-info a {
+            color: #64ffda;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #bb86fc;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
+        }
+
+        .github-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            color: #0a0e27;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.4);
+        }
+
+        .security-badge {
+            display: inline-block;
+            background: rgba(187, 134, 252, 0.2);
+            color: #bb86fc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            border: 1px solid rgba(187, 134, 252, 0.3);
+        }
+
+        /* Blue team specific styling */
+        .section h3[style*="4a9eff"] {
+            color: #64ffda !important;
+        }
+
+        /* Red team specific styling */
+        .section h3[style*="ff6b6b"] {
+            color: #ff4757 !important;
+        }
+
+        .security-badge[style*="ff6b6b"] {
+            background: rgba(255, 71, 87, 0.2) !important;
+            color: #ff4757 !important;
+            border-color: rgba(255, 71, 87, 0.3) !important;
+        }
+
+        .github-link[style*="ffa500"] {
+            background: linear-gradient(45deg, #ff4757, #ff6348) !important;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn, .filter-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #b0bec5;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-btn:hover, .filter-btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active, .filter-btn.active {
+            background: rgba(100, 255, 218, 0.2);
+            color: #64ffda;
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .nav-menu a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+            
+            .header-content h1 {
+                font-size: 2em;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #64ffda;
+            box-shadow: 0 4px 24px rgba(100,255,218,0.15), 0 1.5px 8px rgba(0,0,0,0.15);
+            margin-bottom: 5px;
+            background: #16213e;
+        }
+
+        .red-team .project-card {
+            margin-bottom: 40px;
+        }
+
+        .section:not(.red-team) .project-card {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="#home" class="nav-logo">Tyler Beles</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#featured-projects" class="nav-link" data-section="featured-projects">Projects</a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <header>
+                <div class="header-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                    <img src="profile.jpg" alt="Profile picture of Tyler Beles" class="profile-pic">
+                    <h1>Tyler Beles</h1>
+                    <h2>Cybersecurity Student</h2>
+                    <p>Pursuing a Computer Science degree with a focus on cybersecurity at UW–Madison. Passionate about malware analysis, machine learning security applications, and protecting digital communities. Seeking cybersecurity internship opportunities to apply technical skills in real-world security challenges.</p>
+                </div>
+            </header>
+
+            
+
+            <div class="content-section" id="about">
+                <h3>About Me</h3>
+                <div class="project-card">
+                    <div style="color: #b0bec5;">
+                        <p><strong style="color: #64ffda;">Academic Focus:</strong> Computer Science major at UW–Madison, specializing in cybersecurity, malware analysis, and secure software development.</p>
+                        <p style="margin-top: 15px;"><strong style="color: #64ffda;">Areas of Interest:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Malware Detection & Analysis</li>
+                            <li>Machine Learning for Security</li>
+                            <li>Network Security & Threat Intelligence</li>
+                            <li>Secure Software Engineering</li>
+                            <li>Cybersecurity in Gaming & Digital Communities</li>
+                        </ul>
+                        <p style="margin-top: 20px; font-style: italic;">
+                            "Passionate about leveraging technology to build safer digital environments and protect communities from emerging cyber threats."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="featured-projects">
+                <h3>🌟 Featured Projects</h3>
+                <div class="featured-grid">
+                    <div class="project-card clickable-card" data-section="cybersecurity-projects" data-category="blue-team">
+                        <div class="project-title">Minecraft RAT Scanner</div>
+                        <div class="project-description" style="min-height: 80px;">
+                            Advanced malware detection system for Minecraft mods using machine learning and automated security analysis. Deployed to ECS Security Platform with enterprise-grade infrastructure.
+                        </div>
+                        
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; font-size: 1.1em; color: #b0bec5; min-height: 150px;">
+                            <li>AI-Powered Detection</li>
+                            <li>Real-time Analysis</li>
+                            <li>Decompilation Engine</li>
+                            <li>Threat Intelligence</li>
+                            <li>Web Interface</li>
+                            <li>Enterprise Security</li>
+                        </ul>
+                        
+                        <h4 style="color: #64ffda; margin-top: 20px; margin-bottom: 10px;">Technologies Used:</h4>
+                        <div class="tech-stack" style="margin-bottom: 20px;">
+                            <span class="tech-tag">Python FastAPI</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">AWS ECS Fargate</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">AWS Secrets Manager</span>
+                            <span class="tech-tag">Procyon Decompiler</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card clickable-card" data-section="cybersecurity-projects" data-category="blue-team">
+                        <div class="project-title">Homelab Security Project</div>
+                        <div class="project-description" style="min-height: 80px;">
+                            Virtual network security lab implementing pfSense firewall with Snort IDS/IPS integration. Features custom rule creation, penetration testing validation, and comprehensive network monitoring.
+                        </div>
+                        
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; font-size: 1.1em; color: #b0bec5; min-height: 150px;">
+                            <li>pfSense Firewall Configuration</li>
+                            <li>Snort IDS/IPS Integration</li>
+                            <li>Custom Rule Development</li>
+                            <li>Multi-VM Network Architecture</li>
+                            <li>Penetration Testing Validation</li>
+                            <li>Real-time Alert Monitoring</li>
+                        </ul>
+                        
+                        <h4 style="color: #64ffda; margin-top: 20px; margin-bottom: 10px;">Technologies Used:</h4>
+                        <div class="tech-stack" style="margin-bottom: 20px;">
+                            <span class="tech-tag">pfSense</span>
+                            <span class="tech-tag">Snort IDS/IPS</span>
+                            <span class="tech-tag">Ubuntu Desktop</span>
+                            <span class="tech-tag">VirtualBox</span>
+                            <span class="tech-tag">Kali Linux</span>
+                            <span class="tech-tag">Custom Snort Rules</span>
+                            <span class="tech-tag">Network Configuration</span>
+                            <span class="tech-tag">Nmap</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#cybersecurity-projects" class="github-link nav-link" data-section="cybersecurity-projects">View All Projects</a>
+                </div>
+            </div>
+
+            <div class="content-section" id="experience">
+                <h3>💼 Professional Experience</h3>
+                <div class="experience-container">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h4 style="color: #64ffda; font-size: 1.3em; margin-bottom: 5px;">DevOps Engineer</h4>
+                            <p style="color: #bb86fc; font-weight: 500; margin-bottom: 5px;">Madtown Fitness LLC • Madison, WI</p>
+                            <p style="color: #b0bec5; font-size: 0.95em; margin-bottom: 15px;">June 2024 – Present</p>
+                        </div>
+                        <ul style="color: #b0bec5; margin-left: 20px; line-height: 1.6;">
+                            <li>Built and deployed full-stack web application using React frontend with JavaScript backend on Google Cloud Platform</li>
+                            <li>Configured enterprise-grade email security protocols (DKIM, SPF, DMARC) and Google Workspace administration</li>
+                            <li>Designed AI-powered n8n workflows for automated email management and debt collection processes</li>
+                            <li>Implemented secure API protocols and authentication systems for scalable deployment infrastructure</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item" style="margin-top: 25px;">
+                        <div class="experience-header">
+                            <h4 style="color: #64ffda; font-size: 1.3em; margin-bottom: 5px;">IT Support Specialist & Youth Apprentice</h4>
+                            <p style="color: #bb86fc; font-weight: 500; margin-bottom: 5px;">Evansville Community School District • Evansville, WI</p>
+                            <p style="color: #b0bec5; font-size: 0.95em; margin-bottom: 15px;">July 2022 – August 2023</p>
+                        </div>
+                        <ul style="color: #b0bec5; margin-left: 20px; line-height: 1.6;">
+                            <li>Managed network infrastructure including access points and server racks across district buildings</li>
+                            <li>Developed PowerShell scripts to automate student archiving in Google Classroom systems</li>
+                            <li>Provided technical support for 500+ Chromebooks and delivered remote troubleshooting for hardware/software issues</li>
+                            <li>Documented support tickets and conducted training sessions for students and staff on device management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="skills">
+                <h3 style="text-align: center;">Technical Skills</h3>
+                <div class="skills-grid" style="justify-content: center; align-items: center; max-width: 1000px; margin: 0 auto;">
+                    <div class="skill-category">
+                        <h4>💻 Programming Languages</h4>
+                        <ul>
+                            <li>Python (Advanced)</li>
+                            <li>JavaScript</li>
+                            <li>TypeScript</li>
+                            <li>PowerShell</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🚀 Frameworks & Libraries</h4>
+                        <ul>
+                            <li>React & Next.js</li>
+                            <li>FastAPI</li>
+                            <li>Tailwind CSS</li>
+                            <li>Scikit-learn</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>☁️ Cloud & DevOps</h4>
+                        <ul>
+                            <li>AWS ECS Fargate</li>
+                            <li>Google Cloud Platform</li>
+                            <li>Docker</li>
+                            <li>GitHub Actions</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🔒 Security Tools</h4>
+                        <ul>
+                            <li>pfSense & Snort IDS/IPS</li>
+                            <li>Kali Linux & Nmap</li>
+                            <li>Wireshark</li>
+                            <li>Penetration Testing</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🔍 Malware Analysis</h4>
+                        <ul>
+                            <li>Static Analysis Techniques</li>
+                            <li>JAR File Structure Analysis</li>
+                            <li>Behavioral Pattern Recognition</li>
+                            <li>Threat Intelligence</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🌐 Network Security</h4>
+                        <ul>
+                            <li>Network Configuration</li>
+                            <li>Custom Snort Rules</li>
+                            <li>Traffic Analysis</li>
+                            <li>Firewall Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="contact">
+                <h3>Contact Information</h3>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:TylerBeles47@gmail.com">tylerbeles47@gmail.com</a></p>
+                    <p>LinkedIn: <a href="https://www.linkedin.com/in/tyler-beles">linkedin.com/in/tyler-beles</a></p>
+                    <p>GitHub: <a href="https://github.com/TylerBeles47">github.com/yTylerBeles47</a></p>
+                    <p style="margin-top: 20px; font-style: italic;">
+                        "Passionate about leveraging technology to build safer digital environments and protect communities from emerging cyber threats."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Cybersecurity Projects Section -->
+        <section id="cybersecurity-projects" class="section">
+            <div class="content-section">
+                <h3>🔐 Projects</h3>
+                <p style="color: #b0bec5; margin-bottom: 20px; font-size: 1.1em;">
+                    Explore my hands-on cybersecurity projects spanning both defensive and offensive security techniques. These projects demonstrate practical experience in threat detection, malware analysis, network security, and ethical hacking methodologies.
+                </p>
+                
+                <!-- Category Navigation for Projects -->
+                <div class="category-nav">
+                    <a href="#" class="filter-btn project-filter active" data-filter="all">🔐 All Projects</a>
+                    <a href="#" class="filter-btn project-filter" data-filter="professional">💼 Professional Projects</a>
+                    <a href="#" class="filter-btn project-filter" data-filter="cybersecurity">🛡️ Personal Cybersecurity Projects</a>
+                </div>
+                
+                <!-- Blue Team Projects -->
+                <div class="cybersec-category" id="blue-team-section">
+                    <h3 style="color: #64ffda; margin-top: 30px;">🛡️ Blue Team Projects - Defensive Security</h3>
+                    
+                    <div class="project-card blue-team-project" id="blue-team-minecraft-rat">
+                        <div class="project-title">Minecraft RAT Scanner</div>
+                        <div class="project-description">
+                            A sophisticated security tool that leverages machine learning to detect Remote Access Trojans (RATs) and malicious code in Minecraft JAR files. This project was born from a passion to protect the Hypixel Skyblock community, where users frequently download quality-of-life mods that unfortunately often contain embedded RATs targeting players' accounts and personal information.
+                        </div>
+                        
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul class="features-list">
+                            <li>ML-based detection system for identifying malicious patterns</li>
+                            <li>Automated feature extraction from JAR file structures</li>
+                            <li>Safe mod verification and whitelisting capabilities</li>
+                            <li>Comprehensive scan reporting and logging</li>
+                            <li>Custom training dataset support for continuous improvement</li>
+                            <li>Isolated execution environment for security testing</li>
+                        </ul>
+
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Security Impact & Motivation:</h4>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            This project was developed to help users defend against RATs in a gamemode in Minecraft called Hypixel Skyblock. In this community, users download mods to help with quality of life features. However, in this community there is known to be RATs embedded in the mods. Therefore, I developed this project to help defend against this threat and protect fellow community members.
+                        </p>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            This project demonstrates understanding of malware analysis techniques, machine learning applications in cybersecurity, and the importance of protecting gaming communities from sophisticated threats. The tool provides automated threat detection capabilities that can scale to analyze thousands of mods efficiently.
+                        </p>
+                        
+                        <h4 style="color: #64ffda; margin-top: 25px; margin-bottom: 10px;">Technologies Used:</h4>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python FastAPI</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">AWS ECS Fargate</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">AWS Secrets Manager</span>
+                            <span class="tech-tag">Procyon Decompiler</span>
+                        </div>
+
+                        <a href="https://github.com/TylerBeles47/Minecraft_RAT_Detector" class="github-link">🔗 View on GitHub</a>
+                    </div>
+
+                    <div class="project-card blue-team-project" id="blue-team-homelab">
+                        <div class="project-title">Homelab Security Project</div>
+                        <div class="project-description">
+                            A comprehensive hands-on project designing and implementing a secure enterprise-grade home network infrastructure using pfSense as a next-generation firewall and Ubuntu as a client system. This project demonstrates practical network security implementation, including advanced firewall configuration, network segmentation, and real-time threat detection capabilities. The lab environment features Snort as an Intrusion Detection System (IDS) with custom rule sets to monitor and automatically block malicious traffic patterns.
+                        </div>
+                        
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul class="features-list">
+                            <li>Enterprise-grade pfSense firewall deployment with advanced rule configurations</li>
+                            <li>Network segmentation and DMZ implementation for enhanced security</li>
+                            <li>Snort IDS integration with custom signature-based detection rules</li>
+                            <li>Real-time traffic analysis and automated threat response mechanisms</li>
+                            <li>Penetration testing validation using Kali Linux attack simulations</li>
+                            <li>Network performance optimization and security hardening</li>
+                        </ul>
+
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Security Architecture & Testing:</h4>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            The project involved designing a multi-layered security architecture with proper network segmentation, implementing industry-standard firewall policies, and establishing a robust intrusion detection system. The effectiveness of security controls was rigorously tested through controlled penetration testing exercises using Kali Linux, simulating real-world attack scenarios including port scans, DoS attacks, and network reconnaissance attempts.
+                        </p>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            This hands-on experience demonstrates practical understanding of network security principles, enterprise firewall management, intrusion detection systems, and the critical importance of continuous security monitoring in defending against evolving cyber threats.
+                        </p>
+                        
+                        <h4 style="color: #64ffda; margin-top: 25px; margin-bottom: 10px;">Technologies Used:</h4>
+                        <div class="tech-stack">
+                            <span class="tech-tag">pfSense</span>
+                            <span class="tech-tag">Snort IDS/IPS</span>
+                            <span class="tech-tag">Ubuntu Desktop</span>
+                            <span class="tech-tag">VirtualBox</span>
+                            <span class="tech-tag">Kali Linux</span>
+                            <span class="tech-tag">Custom Snort Rules</span>
+                            <span class="tech-tag">Network Configuration</span>
+                            <span class="tech-tag">Nmap</span>
+                        </div>
+                        
+                        <a href="Homelab/homelab_documentation.html" class="github-link">📖 View Technical Documentation</a>
+                    </div>
+
+                    <div class="project-card blue-team-project" id="blue-team-darkweb-scraper">
+                        <div class="project-title">Dark Web Threat Intelligence Scraper</div>
+                        <div class="project-description">
+                            An advanced threat intelligence gathering tool that monitors dark web sources for emerging malware threats. This automated scraper provides early warning capabilities by identifying new malware variants, threat actor communications, and malicious code samples before they become widespread in the wild.
+                        </div>
+                        
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul class="features-list">
+                            <li>Automated monitoring of dark web marketplaces and forums</li>
+                            <li>Malware sample identification and collection</li>
+                            <li>Threat actor communication analysis</li>
+                            <li>Secure anonymization using Tor and proxy chains</li>
+                            <li>Data parsing and structured intelligence reporting</li>
+                            <li>Alert system for emerging threat indicators</li>
+                        </ul>
+
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Intelligence Value:</h4>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            This project provides proactive threat intelligence by monitoring underground cybercriminal activities and malware distribution channels. By identifying emerging threats early, security teams can develop countermeasures and update detection systems before attacks reach their targets.
+                        </p>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            The scraper demonstrates advanced understanding of OSINT techniques, secure data collection methodologies, and the importance of staying ahead of threat actors through continuous monitoring and analysis of the evolving threat landscape.
+                        </p>
+                        
+                        <h4 style="color: #64ffda; margin-top: 25px; margin-bottom: 10px;">Technologies Used:</h4>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Tor Network</span>
+                            <span class="tech-tag">BeautifulSoup</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">Proxy Chains</span>
+                            <span class="tech-tag">OSINT</span>
+                        </div>
+
+                        <a href="https://github.com/TylerBeles47/DarkThreatIntel" class="github-link">🔗 View on Github</a>
+                    </div>
+
+                    <div class="project-card blue-team-project" id="blue-team-dshield-honeypot">
+                        <div class="project-title">DShield Raspberry Pi Honeypot</div>
+                        <div class="project-description">
+                            A honeypot deployment using the DShield project from SANS Internet Storm Center on Raspberry Pi hardware. Configured in DMZ to capture real-world SSH brute force attacks and HTTP/HTTPS web reconnaissance, contributing threat intelligence to global cybersecurity research. Successfully captured thousands of attack attempts revealing common threat actor patterns and TTPs.
+                        </div>
+                        
+                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul class="features-list">
+                            <li>Real-time SSH brute force attack capture and analysis</li>
+                            <li>Automated threat intelligence submission to SANS ISC</li>
+                            <li>DMZ network configuration for safe isolation</li>
+                            <li>Attack pattern analysis and threat actor profiling</li>
+                            <li>Comprehensive logging and monitoring capabilities</li>
+                            <li>Community contribution to global cybersecurity research</li>
+                        </ul>
+                        
+                        <h4 style="color: #64ffda; margin-top: 25px; margin-bottom: 10px;">Technologies Used:</h4>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Raspberry Pi</span>
+                            <span class="tech-tag">DShield</span>
+                            <span class="tech-tag">SANS ISC</span>
+                            <span class="tech-tag">SSH Honeypot</span>
+                            <span class="tech-tag">Threat Intelligence</span>
+                            <span class="tech-tag">DMZ Configuration</span>
+                        </div>
+
+                        <a href="HoneyPot/dshield_honeypot_documentation.html" class="github-link">📖 View Full Documentation</a>
+                    </div>
+
+                </div>
+
+                <!-- Red Team Projects -->
+                <div class="cybersec-category red-team" id="red-team-section">
+                    <h3 style="color: #ff4757; margin-top: 30px;">⚔️ Red Team Projects - Offensive Security</h3>
+                    
+                    <div class="project-card red-team-project" id="red-team-rat-demo">
+                        <div class="project-title" style="color: #ff4757;">Remote Access Trojan Demonstration</div>
+                        <div class="project-description">
+                            An educational demonstration of RAT capabilities and attack vectors, developed to understand the offensive techniques used by malicious actors. This project provides hands-on experience with the tools and methods that cybersecurity professionals need to defend against, creating a comprehensive understanding of both attack and defense methodologies.
+                        </div>
+                        
+                        <h4 style="color: #ff4757; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul class="features-list">
+                            <li>Client-server architecture demonstration</li>
+                            <li>Remote command execution capabilities</li>
+                            <li>Network communication protocols</li>
+                            <li>System reconnaissance techniques</li>
+                            <li>Comprehensive video documentation</li>
+                            <li>Ethical considerations and legal compliance</li>
+                        </ul>
+
+                        <h4 style="color: #ff6348; margin-top: 20px; margin-bottom: 10px;">Educational Purpose & Ethics:</h4>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            This demonstration was created purely for educational purposes to understand how RATs operate and to develop better defensive strategies. The project emphasizes the importance of ethical hacking principles and responsible disclosure. All testing was conducted in isolated, controlled environments with proper authorization.
+                        </p>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            Understanding offensive techniques is crucial for cybersecurity professionals to develop effective countermeasures and protect organizations from real threats. This project bridges the gap between theoretical knowledge and practical understanding of attack vectors.
+                        </p>
+                        
+                        <h4 style="color: #ff4757; margin-top: 25px; margin-bottom: 10px;">Technologies Used:</h4>
+                        <div class="tech-stack red-team">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Network Programming</span>
+                            <span class="tech-tag">Penetration Testing</span>
+                            <span class="tech-tag">System Administration</span>
+                            <span class="tech-tag">Ethical Hacking</span>
+                            <span class="tech-tag">Documentation</span>
+                        </div>
+
+                        <a href="https://www.loom.com/share/320e5479594746dbb56a7e68e5828cd1?sid=2bf0636f-f1d9-41f3-b344-4a7fbbb1416a" class="github-link" style="background: linear-gradient(45deg, #ff4757, #ff6348);" target="_blank" rel="noopener">🎥 Watch Demo Video</a>
+                    </div>
+
+                    <div class="project-card red-team-project" id="red-team-arp-poisoning">
+                        <div class="project-title" style="color: #ff4757;">Man-in-the-Middle Attack via ARP Poisoning</div>
+                        <div class="project-description">
+                            A hands-on demonstration of a man-in-the-middle (MITM) attack using ARP poisoning in a controlled lab environment. This project showcases the interception of network traffic between a mobile phone and a router on an unmanaged switch, highlighting the vulnerabilities of the ARP protocol.
+                        </div>
+                        
+                        <h4 style="color: #ff4757; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul class="features-list">
+                            <li>ARP table manipulation and spoofing techniques</li>
+                            <li>Network traffic interception and analysis</li>
+                            <li>Real-time packet capture and inspection</li>
+                            <li>Demonstration of protocol vulnerabilities</li>
+                            <li>Controlled lab environment testing</li>
+                            <li>Educational documentation and analysis</li>
+                        </ul>
+                        
+                        <h4 style="color: #ff6348; margin-top: 20px; margin-bottom: 10px;">Attack Scenario:</h4>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            In this scenario, I targeted a mobile phone and a router within a known lab environment. By sending spoofed ARP messages, my machine was able to intercept all traffic between the two devices, effectively becoming the man-in-the-middle.
+                        </p>
+
+                        <h4 style="color: #ff6348; margin-top: 20px; margin-bottom: 10px;">Learning Objectives:</h4>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            This project demonstrates a practical understanding of how ARP poisoning works and how it can be used to compromise a network. It also highlights the importance of using secure protocols like HTTPS to protect against this type of attack.
+                        </p>
+                        
+                        <h4 style="color: #ff4757; margin-top: 25px; margin-bottom: 10px;">Technologies Used:</h4>
+                        <div class="tech-stack red-team">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scapy</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">Network Analysis</span>
+                            <span class="tech-tag">ARP Protocol</span>
+                            <span class="tech-tag">Packet Manipulation</span>
+                        </div>
+
+                        <a href="ArpSpoof/arp_spoof_documentation.html" class="github-link" style="background: linear-gradient(45deg, #ff4757, #ff6348);">🔗 View Technical Documentation</a>
+                    </div>
+                </div>
+
+                <!-- Professional Projects -->
+                <div class="cybersec-category" id="professional-section">
+                    <h3 style="color: #7c3aed; margin-top: 30px;">💼 Professional Projects</h3>
+                    
+                    <div class="project-card" style="border-left: 4px solid #7c3aed; border: 1px solid rgba(124, 58, 237, 0.2);">
+                        <div class="project-title" style="color: #7c3aed;">Madtown Fitness - Powerlifting & Bodybuilding Gym Website</div>
+                        <div class="project-description">
+                            A professional website for a powerlifting and bodybuilding gym with a bold purple and blue theme. This project uses Next.js, React, TypeScript, and Tailwind CSS to create a modern, responsive website with GymMaster integration and an AI chatbot for user questions.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #7c3aed, #38bdf8); color: #fff;">Next.js</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #7c3aed, #38bdf8); color: #fff;">React</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #7c3aed, #38bdf8); color: #fff;">TypeScript</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #7c3aed, #38bdf8); color: #fff;">Tailwind CSS</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #7c3aed, #38bdf8); color: #fff;">Framer Motion</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #7c3aed, #38bdf8); color: #fff;">GymMaster API</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #7c3aed, #38bdf8); color: #fff;">AI Chatbot</span>
+                        </div>
+                        <div class="security-badge" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed; border: 1px solid rgba(124, 58, 237, 0.3);">🏋️‍♂️ Fitness Web App</div>
+                        <h4 style="color: #38bdf8; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul class="features-list">
+                            <li>Modern, responsive design with a bold purple and blue theme</li>
+                            <li>Integration with GymMaster for member management</li>
+                            <li>Animated components using Framer Motion</li>
+                            <li>Fully responsive navigation with mobile menu</li>
+                            <li>Comprehensive pages for gym info, memberships, trainers, and more</li>
+                            <li>SEO optimized with proper meta tags</li>
+                            <li>AI chatbot for user questions about the gym</li>
+                        </ul>
+                        <h4 style="color: #38bdf8; margin-top: 20px; margin-bottom: 10px;">Tech Stack:</h4>
+                        <ul class="features-list">
+                            <li><strong>Next.js:</strong> React framework for server-side rendering and static site generation</li>
+                            <li><strong>React:</strong> JavaScript library for building user interfaces</li>
+                            <li><strong>TypeScript:</strong> Typed JavaScript for better development experience</li>
+                            <li><strong>Tailwind CSS:</strong> Utility-first CSS framework for rapid UI development</li>
+                            <li><strong>Framer Motion:</strong> Animation library for React</li>
+                        </ul>
+                        <a href="https://madtownfitness.com" class="github-link" style="background: linear-gradient(45deg, #7c3aed, #38bdf8); color: #fff;" target="_blank" rel="noopener">🔗 Visit madtownfitness.com</a>
+                    </div>
+
+                    <div class="project-card" style="border-left: 4px solid #e67e22; border: 1px solid rgba(230, 126, 34, 0.2);">
+                        <div class="project-title" style="color: #e67e22;">Instagram AI Comment Bot</div>
+                        <div class="project-description">
+                            An automated Instagram commenting bot that uses OpenAI to generate human-like comments on posts. The bot runs in a Dockerized Android emulator environment for safe and isolated testing, designed to help increase social media attraction to businesses through intelligent engagement.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #e67e22, #f39c12); color: #fff;">OpenAI GPT-3.5</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #e67e22, #f39c12); color: #fff;">Docker</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #e67e22, #f39c12); color: #fff;">Android Emulator</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #e67e22, #f39c12); color: #fff;">WebdriverIO</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #e67e22, #f39c12); color: #fff;">TypeScript</span>
+                            <span class="tech-tag" style="background: linear-gradient(45deg, #e67e22, #f39c12); color: #fff;">VNC</span>
+                            
+                        </div>
+                        <div class="security-badge" style="background: rgba(230, 126, 34, 0.15); color: #e67e22; border: 1px solid rgba(230, 126, 34, 0.3);">🤖 AI Automation Tool</div>
+                        <h4 style="color: #f39c12; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                        <ul class="features-list">
+                            <li>AI-Powered Comments using OpenAI GPT-3.5 for contextual, human-like responses</li>
+                            <li>Instagram Automation with smart navigation and post detection</li>
+                            <li>Dockerized Android Emulator environment for safe, isolated testing</li>
+                            <li>VNC Remote Access for real-time monitoring and debugging</li>
+                            <li>Configurable post selectors and comment strategies</li>
+                            <li>Smart rate limiting and natural delays to avoid detection</li>
+                            <li>Environment variable security for credentials and API keys</li>
+                        </ul>
+                        <h4 style="color: #f39c12; margin-top: 20px; margin-bottom: 10px;">Technical Implementation:</h4>
+                        <ul class="features-list">
+                            <li><strong>AI Integration:</strong> OpenAI API for generating engaging, contextual comments</li>
+                            <li><strong>Containerization:</strong> Docker with 12GB RAM allocation for optimal performance</li>
+                            <li><strong>Automation Framework:</strong> WebdriverIO for reliable mobile app automation</li>
+                            <li><strong>Security:</strong> Environment variables and isolated container execution</li>
+                            <li><strong>Monitoring:</strong> VNC server for real-time bot observation</li>
+                        </ul>
+                        <h4 style="color: #f39c12; margin-top: 20px; margin-bottom: 10px;">Business Impact:</h4>
+                        <p style="color: #b0bec5; margin-bottom: 15px;">
+                            This automation tool significantly increases social media engagement for businesses by generating authentic, AI-powered comments that drive user interaction and brand visibility. The bot intelligently analyzes post content and creates relevant responses that feel natural and engaging, helping businesses grow their social media presence efficiently.
+                        </p>
+                        <a href="#" class="github-link" style="background: linear-gradient(45deg, #e67e22, #f39c12); color: #fff;">🔗 View Project Repository</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function showSection(sectionId, anchorId) {
+            // If it's a section within the home page, just scroll to it
+            if (['about', 'experience', 'skills', 'contact', 'featured-projects', 'projects-overview'].includes(sectionId)) {
+                // Ensure home section is visible and active
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById('home').classList.add('active');
+                
+                // Update nav links - keep the clicked nav item active for home page sections
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Set the appropriate nav link as active
+                const navLink = document.querySelector(`[data-section="${sectionId}"]`);
+                if (navLink) {
+                    navLink.classList.add('active');
+                } else {
+                    // For sections not in main nav, set Home as active
+                    document.querySelector('[data-section="home"]').classList.add('active');
+                }
+                
+                // Scroll to the target element within the home page
+                setTimeout(() => {
+                    const targetElement = document.getElementById(sectionId);
+                    if (targetElement) {
+                        // For better visibility, use 'center' positioning for contact section
+                        const scrollBlock = sectionId === 'contact' ? 'center' : 'start';
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: scrollBlock });
+                        // Offset for fixed navbar - wait for scroll to complete
+                        setTimeout(() => {
+                            if (sectionId !== 'contact') {
+                                window.scrollBy({ top: -80, left: 0, behavior: 'smooth' });
+                            }
+                        }, 300);
+                    }
+                }, 100);
+                return;
+            }
+            
+            // For other sections (projects, cybersecurity-projects, other-projects), switch sections
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            // Show target section and activate nav link
+            const targetSection = document.getElementById(sectionId);
+            const targetLink = document.querySelector(`[data-section="${sectionId}"]`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+            // Scroll to anchor if provided
+            if (anchorId) {
+                setTimeout(() => {
+                    const anchorElem = document.getElementById(anchorId);
+                    if (anchorElem) {
+                        anchorElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Offset for fixed navbar
+                        setTimeout(() => {
+                            window.scrollBy({ top: -80, left: 0, behavior: 'smooth' });
+                        }, 300);
+                    }
+                }, 200);
+            } else {
+                // Always scroll to top of section
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+            }
+        }
+
+        function handleNavClick(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                // Support both #section and #section|anchor
+                const hash = href.substring(1);
+                if (hash.includes('|')) {
+                    const [sectionId, anchorId] = hash.split('|');
+                    showSection(sectionId, anchorId);
+                } else {
+                    showSection(hash, null);
+                }
+            }
+        }
+
+        // Attach to ALL nav, quick nav, and feature links
+        document.querySelectorAll('.nav-link, .category-btn, .github-link').forEach(link => {
+            link.addEventListener('click', handleNavClick);
+        });
+
+        // Add typing effect to the main title
+        const title = document.querySelector('h1');
+        if (title) {
+            const text = title.textContent;
+            title.textContent = '';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            setTimeout(typeWriter, 500);
+        }
+
+        // Add scroll-triggered animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Make featured project cards clickable
+        document.querySelectorAll('.clickable-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function() {
+                const section = this.getAttribute('data-section');
+                const category = this.getAttribute('data-category');
+                if (section) {
+                    showSection(section, null);
+                    // If clicking on a featured project, filter to its category
+                    if (category && section === 'cybersecurity-projects') {
+                        setTimeout(() => {
+                            filterCyberSecProjects(category);
+                        }, 100);
+                    }
+                }
+            });
+        });
+
+        // Projects filtering functionality
+        function filterProjects(filter) {
+            const blueTeamSection = document.getElementById('blue-team-section');
+            const redTeamSection = document.getElementById('red-team-section');
+            const professionalSection = document.getElementById('professional-section');
+            const filterBtns = document.querySelectorAll('.project-filter');
+            
+            // Update active button
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-filter') === filter) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Show/hide sections based on filter
+            if (filter === 'all') {
+                if (blueTeamSection) blueTeamSection.style.display = 'block';
+                if (redTeamSection) redTeamSection.style.display = 'block';
+                if (professionalSection) professionalSection.style.display = 'block';
+            } else if (filter === 'professional') {
+                if (blueTeamSection) blueTeamSection.style.display = 'none';
+                if (redTeamSection) redTeamSection.style.display = 'none';
+                if (professionalSection) professionalSection.style.display = 'block';
+            } else if (filter === 'cybersecurity') {
+                if (blueTeamSection) blueTeamSection.style.display = 'block';
+                if (redTeamSection) redTeamSection.style.display = 'block';
+                if (professionalSection) professionalSection.style.display = 'none';
+            }
+        }
+
+        // Add event listeners for project filters
+        document.querySelectorAll('.project-filter').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filter = this.getAttribute('data-filter');
+                filterProjects(filter);
+            });
+        });
+    });
+    </script>
+</body>
+</html>
