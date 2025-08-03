@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Documentation: Setting up pfSense with Snort for IDS/IPS in VirtualBox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e6ed;
+            background: linear-gradient(135deg, #0a0e27 0%, #16213e 50%, #1a1a2e 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        .header-content h1 {
+            color: #64ffda;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 25px rgba(100, 255, 218, 0.6);
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        .section h2 {
+            color: #64ffda;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #64ffda;
+            padding-bottom: 10px;
+        }
+        .section h3 {
+            color: #bb86fc;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .section p, .section li {
+            color: #b0bec5;
+            margin-bottom: 15px;
+        }
+        .section ul, .section ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        .section img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        code {
+            background-color: #0a0e27;
+            color: #64ffda;
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        pre {
+            background-color: #0a0e27;
+            color: #e0e6ed;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        pre code {
+            padding: 0;
+            background-color: transparent;
+        }
+        a {
+            color: #64ffda;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .toc {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .toc h2 {
+            border-bottom: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc ul li {
+            margin-bottom: 10px;
+        }
+        .toc ul ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Comprehensive Documentation: Setting up pfSense with Snort for IDS/IPS in VirtualBox</h1>
+            </div>
+        </header>
+
+        <section class="section toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#intro">1. Introduction</a></li>
+                <li><a href="#prereq">2. Prerequisites</a></li>
+                <li><a href="#vbox">I. VirtualBox Setup: Network Configuration and Boot Order for VMs</a>
+                    <ul>
+                        <li><a href="#vbox-pfsense">A. pfSense VM Configuration</a></li>
+                        <li><a href="#vbox-ubuntu">B. Ubuntu VM Configuration</a></li>
+                        <li><a href="#vbox-kali">C. Kali Linux VM Configuration</a></li>
+                    </ul>
+                </li>
+                <li><a href="#pfsense-config">II. pfSense Initial Configuration (Console & Web Interface)</a>
+                    <ul>
+                        <li><a href="#pfsense-console">A. Console Interface Assignment</a></li>
+                        <li><a href="#pfsense-web">B. Web Interface Setup Wizard</a></li>
+                    </ul>
+                </li>
+                <li><a href="#snort-config">III. Installing and Configuring Snort on pfSense</a>
+                    <ul>
+                        <li><a href="#snort-install">A. Install Snort Package</a></li>
+                        <li><a href="#snort-global">B. Configure Snort Global Settings</a></li>
+                        <li><a href="#snort-update">C. Update Snort Rules</a></li>
+                        <li><a href="#snort-interface">D. Add and Configure Snort Interface (LAN)</a></li>
+                        <li><a href="#snort-preproc">E. Configure Preprocessors and Rule Categories for LAN Interface</a></li>
+                    </ul>
+                </li>
+                <li><a href="#custom-rule">IV. Creating and Testing a Custom Snort Rule (Port Scan)</a>
+                    <ul>
+                        <li><a href="#rule-syntax">A. Understanding Snort Rule Syntax</a></li>
+                        <li><a href="#rule-create">B. Creating the Custom Rule</a></li>
+                        <li><a href="#rule-add">C. How to Add the Custom Rule in pfSense</a></li>
+                        <li><a href="#rule-test">D. Testing Your Custom Rule from Kali</a></li>
+                        <li><a href="#rule-troubleshoot">E. Troubleshooting (Common Issues & Diagnostics)</a></li>
+                    </ul>
+                </li>
+                <li><a href="#snort-expand">V. Expanding and Refining Your Snort Setup</a>
+                    <ul>
+                        <li><a href="#expand-preproc">A. Re-enable Preprocessors (Gradually)</a></li>
+                        <li><a href="#expand-tune">B. Tune Your Custom Rule Threshold</a></li>
+                        <li><a href="#expand-ips">C. Enable Blocking (IPS Mode)</a></li>
+                        <li><a href="#expand-rules">D. Explore Other Snort Rules</a></li>
+                        <li><a href="#expand-blocked">E. View Blocked Hosts</a></li>
+                    </ul>
+                </li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </section>
+
+        <section id="intro" class="section">
+            <h2>1. Introduction</h2>
+            <p>This guide will walk you through building a functional, isolated network security lab within Oracle VirtualBox. You will deploy pfSense as a central firewall, integrate Snort to detect and prevent network intrusions, and use Ubuntu as a typical internal client machine while Kali Linux serves as an attacker platform for testing.</p>
+        </section>
+
+        <section id="prereq" class="section">
+            <h2>2. Prerequisites</h2>
+            <ul>
+                <li><b>Host Machine:</b> A computer with enough RAM (8GB+ recommended), CPU cores, and disk space (100GB+ recommended) to run multiple virtual machines concurrently.</li>
+                <li><b>Oracle VirtualBox:</b> Download and install the latest version from <a href="https://www.virtualbox.org" target="_blank">virtualbox.org</a>.</li>
+                <li><b>pfSense ISO:</b> Download the CE (Community Edition) AMD64 installer from <a href="https://www.pfsense.org" target="_blank">pfsense.org</a>.</li>
+                <li><b>Ubuntu Desktop ISO:</b> Download the latest LTS (Long Term Support) version from <a href="https://ubuntu.com" target="_blank">ubuntu.com</a>.</li>
+                <li><b>Kali Linux VM Image or ISO:</b> Download the VirtualBox pre-built image or an installer ISO from <a href="https://www.kali.org/get-kali/" target="_blank">kali.org/get-kali/</a>. Using the pre-built VM image is generally faster for Kali.</li>
+                <li><b>Internet Access:</b> Required on the host machine for downloading software and for pfSense to update rules.</li>
+                <li><b>Basic Networking Knowledge:</b> Familiarity with concepts like IP addresses, subnets, and firewalls is helpful.</li>
+                <li><b>Snort.org Account:</b> A free registered user account is required to obtain an Oinkcode for official Snort rules. Register at <a href="https://www.snort.org" target="_blank">www.snort.org</a>.</li>
+            </ul>
+        </section>
+
+        <section id="vbox" class="section">
+            <h2>I. VirtualBox Setup: Network Configuration and Boot Order for VMs</h2>
+            <p>Proper VirtualBox network configuration is paramount for pfSense to act as a central firewall and for VMs to communicate correctly. Ensure all VMs are powered off before changing their settings.</p>
+            
+            <h3 id="vbox-pfsense">A. pfSense VM Configuration</h3>
+            <p><b>Network Adapters (Crucial):</b></p>
+            <p>Select your pfSense VM (must be powered off) and go to Settings > Network. Configure two adapters:</p>
+            <ul>
+                <li><b>Adapter 1 (WAN):</b> Attached to NAT, Promiscuous Mode: Allow All.</li>
+                <li><b>Adapter 2 (LAN):</b> Attached to Internal Network (e.g., <code>intnet</code>), Promiscuous Mode: Allow All.</li>
+            </ul>
+            <img src="SettingUPNetwork.png" alt="Setting up pfSense Network Adapters">
+            <p>After configuring the network adapters, start the VM and follow the on-screen prompts to install pfSense.</p>
+            <img src="InstallingPfsense.png" alt="pfSense Installation in Console">
+            
+            <p><b>Remove Installation Media & Adjust Boot Order (After Installation):</b></p>
+            <p>After the installation completes, power off the VM. Go to Settings > Storage and remove the pfSense ISO from the virtual optical drive. Then, go to Settings > System and ensure 'Hard Disk' is at the top of the boot order.</p>
+            <img src="ClickRemoveDisk.png" alt="Remove Disk from Virtual Drive">
+            <img src="ChangeBootOrder.png" alt="Change Boot Order">
+
+            <h3 id="vbox-ubuntu">B. Ubuntu VM Configuration</h3>
+            <p><b>Network Adapter:</b></p>
+            <p>For the Ubuntu VM, go to Settings > Network. Set Adapter 1 to be attached to the same Internal Network (<code>intnet</code>) as the pfSense LAN. Set Promiscuous Mode to 'Allow All'.</p>
+
+            <h3 id="vbox-kali">C. Kali Linux VM Configuration</h3>
+            <p><b>Network Adapter:</b></p>
+            <p>For the Kali Linux VM, also go to Settings > Network. Set Adapter 1 to be attached to the same Internal Network (<code>intnet</code>). Promiscuous Mode must be 'Allow All'.</p>
+        </section>
+
+        <section id="pfsense-config" class="section">
+            <h2>II. pfSense Initial Configuration (Console & Web Interface)</h2>
+            <h3 id="pfsense-console">A. Console Interface Assignment</h3>
+            <p>Start your pfSense VM. It will boot to a text-based console. Follow the prompts to assign your network interfaces (e.g., <code>vtnet0</code> for WAN, <code>vtnet1</code> for LAN).</p>
+            <p>After assignment, the console will display the WAN and LAN IP addresses. The default LAN IP is <code>192.168.1.1</code>.</p>
+            <img src="PfenseHomeScreenLAN.png" alt="pfSense Console Home Screen">
+
+            <h3 id="pfsense-web">B. Web Interface Setup Wizard</h3>
+            <p>Start your Ubuntu VM. Open a web browser and navigate to <code>https://192.168.1.1</code>. Accept the security warning and log in with the default credentials (admin/pfsense).</p>
+            <img src="GoToUbuntuWebPage.png" alt="Accessing pfSense Web GUI from Ubuntu">
+            <p>Follow the setup wizard to configure basic settings like hostname, domain, time server, and most importantly, to set a new admin password.</p>
+        </section>
+
+        <section id="snort-config" class="section">
+            <h2>III. Installing and Configuring Snort on pfSense</h2>
+            <h3 id="snort-install">A. Install Snort Package</h3>
+            <p>In the pfSense web GUI, go to <b>System > Package Manager > Available Packages</b>. Search for "snort" and click Install.</p>
+
+            <h3 id="snort-global">B. Configure Snort Global Settings</h3>
+            <p>Navigate to <b>Services > Snort > Global Settings</b>. Enter your Snort Oinkcode and enable the desired rule sets (Snort VRT, Emerging Threats, etc.). Set an automatic update interval.</p>
+            <img src="SnortConfigure.png" alt="Configuring Snort Global Settings">
+
+            <h3 id="snort-update">C. Update Snort Rules</h3>
+            <p>Go to the <b>Updates</b> tab and click the "Update Rules" button to download the latest rule sets.</p>
+
+            <h3 id="snort-interface">D. Add and Configure Snort Interface (LAN)</h3>
+            <p>Go to the <b>Snort Interfaces</b> tab and click "+ Add". Select the LAN interface, give it a description, and for initial testing, <b>LEAVE "Block offenders" UNCHECKED</b>. This runs Snort in IDS (detection) mode.</p>
+            <img src="EnableLanAndAlerts.png" alt="Adding and Enabling Snort on LAN Interface">
+
+            <h3 id="snort-preproc">E. Configure Preprocessors and Rule Categories for LAN Interface</h3>
+            <p>Edit the LAN interface in Snort. On the <b>Preprocessors</b> tab, uncheck all general preprocessors for initial custom rule testing to avoid interference. On the <b>Categories</b> tab, ensure "User Defined Rules" is checked.</p>
+        </section>
+
+        <section id="custom-rule" class="section">
+            <h2>IV. Creating and Testing a Custom Snort Rule (Port Scan)</h2>
+            <h3 id="rule-syntax">A. Understanding Snort Rule Syntax</h3>
+            <p>A basic Snort rule looks like this:</p>
+            <pre><code>action protocol source_ip source_port -> destination_ip destination_port (options)</code></pre>
+            <p>Key options include <code>msg</code>, <code>sid</code>, <code>rev</code>, and <code>flags</code>.</p>
+
+            <h3 id="rule-create">B. Creating the Custom Rule</h3>
+            <p>We will create rules to detect ICMP pings and inbound SYN scans.</p>
+            <pre><code>alert icmp any any -> any any (msg:"ICMP Ping Test"; sid:1000001; rev:1;)
+alert tcp any any -> $HOME_NET any (msg:"Inbound SYN Scan"; flags:S; threshold:type threshold, track by_src, count 10, seconds 60; sid:1000003; rev:1;)</code></pre>
+
+            <h3 id="rule-add">C. How to Add the Custom Rule in pfSense</h3>
+            <p>Go to <b>Services > Snort > Snort Interfaces</b>, edit your LAN interface, and click the <b>Rules</b> tab. Paste the custom rule into the "Custom Rules" text area and click Save.</p>
+            <img src="CustomRule.png" alt="Adding a Custom Snort Rule">
+
+            <h3 id="rule-test">D. Testing Your Custom Rule from Kali</h3>
+            <p>First, start the Snort service on the LAN interface from the <b>Snort Interfaces</b> tab. The status icon should be a green checkmark.</p>
+            <img src="MakeSureTheInterfaceIsON.png" alt="Starting the Snort Interface">
+            <p>On your Kali VM, open a terminal and run an Nmap SYN scan against your Ubuntu VM's IP address.</p>
+            <img src="KaliMachine.png" alt="Running Nmap Scan from Kali Linux">
+            <pre><code>sudo nmap -sS -p 1-100 192.168.1.100</code></pre>
+            <p>Check for alerts in pfSense under <b>Services > Snort > Alerts</b>. You should see your custom message.</p>
+            <img src="ReviewTheAlerts.png" alt="Reviewing Snort Alerts">
+
+            <h3 id="rule-troubleshoot">E. Troubleshooting (Common Issues & Diagnostics)</h3>
+            <p>If you don't see alerts, check the Snort interface status, review system logs for Snort errors, and use the Packet Capture tool in pfSense (Diagnostics > Packet Capture) to verify that the traffic is actually reaching the LAN interface.</p>
+        </section>
+
+        <section id="snort-expand" class="section">
+            <h2>V. Expanding and Refining Your Snort Setup</h2>
+            <h3 id="expand-preproc">A. Re-enable Preprocessors (Gradually)</h3>
+            <p>Once basic testing works, go back to the <b>Preprocessors</b> tab for your LAN interface and start enabling relevant items like Stream5, HTTP Inspect, and DNS for deeper inspection.</p>
+
+            <h3 id="expand-tune">B. Tune Your Custom Rule Threshold</h3>
+            <p>To make the port scan rule less noisy, add a threshold. This rule alerts only if it sees 10 SYN packets from the same source within 5 seconds.</p>
+            <pre><code>alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"SYN Port Scan Detected (Custom Rule)"; flags:S; flow:stateless; threshold:type limit, track by_src, count 10, seconds 5; sid:1000001; rev:3;)</code></pre>
+
+            <h3 id="expand-ips">C. Enable Blocking (IPS Mode)</h3>
+            <p>When you are confident with the alerts, edit the Snort LAN interface and check the <b>Block offenders</b> box. This enables IPS (prevention) mode.</p>
+
+            <h3 id="expand-rules">D. Explore Other Snort Rules</h3>
+            <p>Go to the <b>Categories</b> tab for your LAN interface and enable more rule sets (e.g., malware, exploit, policy) to broaden your detection capabilities.</p>
+
+            <h3 id="expand-blocked">E. View Blocked Hosts</h3>
+            <p>Go to <b>Services > Snort > Blocked</b> tab to see a list of IP addresses that Snort has blocked.</p>
+        </section>
+
+        <section id="conclusion" class="section">
+            <h2>Conclusion</h2>
+            <p>You have now successfully set up a powerful virtual network security lab with pfSense and Snort. This environment provides an excellent platform for learning about network firewalling, intrusion detection and prevention, and practicing penetration testing techniques in a safe, isolated space. Remember to keep your Snort rules updated and to continually refine your configurations as you learn more.</p>
+        </section>
+    </div>
+</body>
+</html>

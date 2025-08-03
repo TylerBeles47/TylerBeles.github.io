@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Portfolio - [Your Name]</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e6ed;
+            background: linear-gradient(135deg, #0a0e27 0%, #16213e 50%, #1a1a2e 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-content h1 {
+            color: #64ffda;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 25px rgba(100, 255, 218, 0.6);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 25px rgba(100, 255, 218, 0.6); }
+            to { text-shadow: 0 0 35px rgba(100, 255, 218, 0.8), 0 0 45px rgba(100, 255, 218, 0.4); }
+        }
+
+        .header-content h2 {
+            color: #bb86fc;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .header-content p {
+            color: #b0bec5;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .section h3 {
+            color: #64ffda;
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section h3::before {
+            content: "";
+            font-size: 1.2em;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #64ffda;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .project-card:hover {
+            border-left-color: #bb86fc;
+            border-color: rgba(187, 134, 252, 0.3);
+            transform: translateX(10px);
+        }
+
+        .project-title {
+            color: #64ffda;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-title::before {
+            content: "🎯";
+        }
+
+        .project-description {
+            color: #b0bec5;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #bb86fc, #64ffda);
+            color: #0a0e27;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        /* Red team tech tags */
+        .red-team .tech-tag {
+            background: linear-gradient(45deg, #ff4757, #ff6348);
+            color: #0a0e27;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .features-list {
+            color: #b0bec5;
+            margin-left: 20px;
+        }
+
+        .features-list li {
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "⚡";
+            position: absolute;
+            left: -20px;
+            color: #64ffda;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+
+        .skill-category h4 {
+            color: #bb86fc;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            color: #b0bec5;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-category li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #64ffda;
+        }
+
+        .contact-info {
+            text-align: center;
+            color: #b0bec5;
+        }
+
+        .contact-info a {
+            color: #64ffda;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #bb86fc;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
+        }
+
+        .github-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            color: #0a0e27;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.4);
+        }
+
+        .security-badge {
+            display: inline-block;
+            background: rgba(187, 134, 252, 0.2);
+            color: #bb86fc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            border: 1px solid rgba(187, 134, 252, 0.3);
+        }
+
+        /* Blue team specific styling */
+        .section h3[style*="4a9eff"] {
+            color: #64ffda !important;
+        }
+
+        /* Red team specific styling */
+        .section h3[style*="ff6b6b"] {
+            color: #ff4757 !important;
+        }
+
+        .security-badge[style*="ff6b6b"] {
+            background: rgba(255, 71, 87, 0.2) !important;
+            color: #ff4757 !important;
+            border-color: rgba(255, 71, 87, 0.3) !important;
+        }
+
+        .github-link[style*="ffa500"] {
+            background: linear-gradient(45deg, #ff4757, #ff6348) !important;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header-content h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>[Your Name]</h1>
+                <h2>Cybersecurity Student</h2>
+                <p>Passionate about malware analysis, machine learning security applications, and protecting digital gaming communities. Seeking cybersecurity internship opportunities to apply technical skills in real-world security challenges.</p>
+            </div>
+        </header>
+
+        <section class="section">
+            <h3 style="color: #64ffda;">🛡️ Blue Team Projects</h3>
+            <div class="project-card">
+                <div class="project-title">Minecraft RAT Scanner</div>
+                <div class="project-description">
+                    A sophisticated security tool that leverages machine learning to detect Remote Access Trojans (RATs) and malicious code in Minecraft JAR files. This project was born from a passion to protect the Hypixel Skyblock community, where users frequently download quality-of-life mods that unfortunately often contain embedded RATs targeting players' accounts and personal information.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Malware Analysis</span>
+                    <span class="tech-tag">Feature Extraction</span>
+                    <span class="tech-tag">JAR Analysis</span>
+                    <span class="tech-tag">Threat Detection</span>
+                </div>
+                <div class="security-badge">🔒 Defensive Security & Detection</div>
+                
+                <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
+                <ul class="features-list">
+                    <li>ML-based detection system for identifying malicious patterns</li>
+                    <li>Automated feature extraction from JAR file structures</li>
+                    <li>Safe mod verification and whitelisting capabilities</li>
+                    <li>Comprehensive scan reporting and logging</li>
+                    <li>Custom training dataset support for continuous improvement</li>
+                    <li>Isolated execution environment for security testing</li>
+                </ul>
+
+                <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Security Impact & Motivation:</h4>
+                <p style="color: #b0bec5; margin-bottom: 15px;">
+                    This project was developed to help users defend against RATs in a gamemode in Minecraft called Hypixel Skyblock. In this community, users download mods to help with quality of life features. However, in this community there is known to be RATs embedded in the mods. Therefore, I developed this project to help defend against this threat and protect fellow community members.
+                </p>
+                <p style="color: #b0bec5; margin-bottom: 15px;">
+                    This project demonstrates understanding of malware analysis techniques, machine learning applications in cybersecurity, and the importance of protecting gaming communities from sophisticated threats. The tool provides automated threat detection capabilities that can scale to analyze thousands of mods efficiently.
+                </p>
+
+                <a href="#" class="github-link">🔗 View on GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Dark Web Threat Intelligence Scraper</div>
+                <div class="project-description">
+                    An advanced threat intelligence gathering tool that monitors dark web sources for emerging malware threats. This automated scraper provides early warning capabilities by identifying new malware variants, threat actor communications, and malicious code samples before they become widespread in the wild.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Web Scraping</span>
+                    <span class="tech-tag">Tor Network</span>
+                    <span class="tech-tag">Threat Intelligence</span>
+                    <span class="tech-tag">Data Analysis</span>
+                    <span class="tech-tag">Anonymization</span>
+                </div>
+                <div class="security-badge">🔍 Threat Intelligence & OSINT</div>
+                
+                <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Capabilities:</h4>
+                <ul class="features-list">
+                    <li>Automated monitoring of dark web marketplaces and forums</li>
+                    <li>Malware sample identification and collection</li>
+                    <li>Threat actor communication analysis</li>
+                    <li>Secure anonymization using Tor and proxy chains</li>
+                    <li>Data parsing and structured intelligence reporting</li>
+                    <li>Alert system for emerging threat indicators</li>
+                </ul>
+
+                <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Intelligence Value:</h4>
+                <p style="color: #b0bec5; margin-bottom: 15px;">
+                    This project provides proactive threat intelligence by monitoring underground cybercriminal activities and malware distribution channels. By identifying emerging threats early, security teams can develop countermeasures and update detection systems before attacks reach their targets.
+                </p>
+                <p style="color: #b0bec5; margin-bottom: 15px;">
+                    The scraper demonstrates advanced understanding of OSINT techniques, secure data collection methodologies, and the importance of staying ahead of threat actors through continuous monitoring and analysis of the evolving threat landscape.
+                </p>
+
+                <a href="#" class="github-link">🔗 View Project Documentation</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Homelab Security Project</div>
+                <div class="project-description">
+                    A hands-on project designing and implementing a secure home network using pfSense as a firewall and Ubuntu as a client. The project involved configuring network interfaces, setting up firewall rules, and deploying Snort as an Intrusion Detection System (IDS) to monitor and block malicious traffic. The effectiveness of the IDS was tested by simulating attacks from a Kali Linux machine.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">pfSense</span>
+                    <span class="tech-tag">Ubuntu</span>
+                    <span class="tech-tag">Snort</span>
+                    <span class="tech-tag">IDS</span>
+                    <span class="tech-tag">VirtualBox</span>
+                    <span class="tech-tag">Kali Linux</span>
+                </div>
+                <div class="security-badge">🔒 Network Security & Monitoring</div>
+                <a href="homelab_documentation.html" class="github-link">🔗 View Project Documentation</a>
+            </div>
+        </section>
+
+        <section class="section red-team">
+            <h3 style="color: #ff4757;">⚔️ Red Team Projects</h3>
+            <div class="project-card">
+                <div class="project-title">Remote Access Trojan Demonstration</div>
+                <div class="project-description">
+                    An educational demonstration of RAT capabilities and attack vectors, developed to understand the offensive techniques used by malicious actors. This project provides hands-on experience with the tools and methods that cybersecurity professionals need to defend against, creating a comprehensive understanding of both attack and defense methodologies.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Network Programming</span>
+                    <span class="tech-tag">Penetration Testing</span>
+                    <span class="tech-tag">System Administration</span>
+                    <span class="tech-tag">Ethical Hacking</span>
+                    <span class="tech-tag">Documentation</span>
+                </div>
+                <div class="security-badge" style="background: rgba(255, 71, 87, 0.2); color: #ff4757;">⚡ Educational Red Team Exercise</div>
+                
+                <h4 style="color: #ff4757; margin-top: 20px; margin-bottom: 10px;">Key Components:</h4>
+                <ul class="features-list">
+                    <li>Client-server architecture demonstration</li>
+                    <li>Remote command execution capabilities</li>
+                    <li>Network communication protocols</li>
+                    <li>System reconnaissance techniques</li>
+                    <li>Comprehensive video documentation</li>
+                    <li>Ethical considerations and legal compliance</li>
+                </ul>
+
+                <h4 style="color: #ff6348; margin-top: 20px; margin-bottom: 10px;">Educational Purpose & Ethics:</h4>
+                <p style="color: #b0bec5; margin-bottom: 15px;">
+                    This demonstration was created purely for educational purposes to understand how RATs operate and to develop better defensive strategies. The project emphasizes the importance of ethical hacking principles and responsible disclosure. All testing was conducted in isolated, controlled environments with proper authorization.
+                </p>
+                <p style="color: #b0bec5; margin-bottom: 15px;">
+                    Understanding offensive techniques is crucial for cybersecurity professionals to develop effective countermeasures and protect organizations from real threats. This project bridges the gap between theoretical knowledge and practical understanding of attack vectors.
+                </p>
+
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="#" class="github-link">🔗 View Documentation</a>
+                    <a href="#" class="github-link" style="background: linear-gradient(45deg, #ff4757, #ff6348);">🎥 Watch Demo Video</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Man-in-the-Middle Attack via ARP Poisoning</div>
+                <div class="project-description">
+                    A comprehensive demonstration of network interception techniques using ARP poisoning to conduct man-in-the-middle attacks. This project explores fundamental network security vulnerabilities and demonstrates how attackers can intercept and manipulate network traffic in switched environments.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Scapy</span>
+                    <span class="tech-tag">Network Protocols</span>
+                    <span class="tech-tag">ARP Spoofing</span>
+                    <span class="tech-tag">Traffic Analysis</span>
+                    <span class="tech-tag">Wireshark</span>
+                </div>
+                <div class="security-badge" style="background: rgba(255, 71, 87, 0.2); color: #ff4757;">🔍 Network Attack Simulation</div>
+                
+                <h4 style="color: #ff4757; margin-top: 20px; margin-bottom: 10px;">Attack Components:</h4>
+                <ul class="features-list">
+                    <li>ARP table poisoning and spoofing techniques</li>
+                    <li>Network traffic interception and capture</li>
+                    <li>Real-time packet analysis and manipulation</li>
+                    <li>Session hijacking demonstration</li>
+                    <li>SSL/TLS bypass techniques exploration</li>
+                    <li>Network topology discovery and mapping</li>
+                </ul>
+
+                <h4 style="color: #ff6348; margin-top: 20px; margin-bottom: 10px;">Learning Objectives & Defense Insights:</h4>
+                <p style="color: #b0bec5; margin-bottom: 15px;">
+                    This project demonstrates critical network security vulnerabilities that exist in switched environments and highlights the importance of proper network segmentation, monitoring, and security controls. By understanding how ARP poisoning attacks work, security professionals can better implement defensive measures.
+                </p>
+                <p style="color: #b0bec5; margin-bottom: 15px;">
+                    The exercise emphasizes the need for network monitoring tools, ARP inspection protocols, and secure communication channels. All demonstrations were conducted in isolated lab environments with proper authorization and ethical guidelines.
+                </p>
+
+                <a href="#" class="github-link">🔗 View Technical Documentation</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>Technical Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>🔍 Malware Analysis</h4>
+                    <ul>
+                        <li>Static Analysis Techniques</li>
+                        <li>JAR File Structure Analysis</li>
+                        <li>Behavioral Pattern Recognition</li>
+                        <li>Threat Intelligence</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>🤖 Machine Learning</h4>
+                    <ul>
+                        <li>Feature Engineering</li>
+                        <li>Classification Algorithms</li>
+                        <li>Model Training & Validation</li>
+                        <li>Dataset Generation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>💻 Programming</h4>
+                    <ul>
+                        <li>Python (Advanced)</li>
+                        <li>Security Scripting</li>
+                        <li>Version Control (Git)</li>
+                        <li>Virtual Environments</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>🛡️ Security Practices</h4>
+                    <ul>
+                        <li>Secure Development</li>
+                        <li>Isolated Testing Environments</li>
+                        <li>Threat Modeling</li>
+                        <li>Risk Assessment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>Education & Interests</h3>
+            <div class="project-card">
+                <div style="color: #b0bec5;">
+                    <p><strong style="color: #64ffda;">Academic Focus:</strong> Currently pursuing studies in cybersecurity with a focus on malware analysis and machine learning applications in security.</p>
+                    <p style="margin-top: 15px;"><strong style="color: #64ffda;">Areas of Interest:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Malware Detection and Analysis</li>
+                        <li>Machine Learning in Cybersecurity</li>
+                        <li>Gaming Security and Digital Rights Management</li>
+                        <li>Threat Intelligence and Automation</li>
+                        <li>Secure Software Development</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
+                <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+                <p style="margin-top: 20px; font-style: italic;">
+                    "Passionate about leveraging technology to build safer digital environments and protect communities from emerging cyber threats."
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for any internal links
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add typing effect to the main title
+            const title = document.querySelector('h1');
+            if (title) {
+                const text = title.textContent;
+                title.textContent = '';
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        title.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                };
+                setTimeout(typeWriter, 500);
+            }
+
+            // Add scroll-triggered animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
