@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Portfolio - Tyler Beles</title>
+    <title>Projects - Tyler Beles</title>
     <style>
         * {
             margin: 0;
@@ -82,12 +82,8 @@
 
         /* Section Styles */
         .section {
-            display: none;
-            padding-top: 80px;
-        }
-
-        .section.active {
             display: block;
+            padding-top: 80px;
         }
 
         header {
@@ -153,14 +149,6 @@
             gap: 15px;
         }
 
-        /* Featured Projects Grid */
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
         .project-card {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
@@ -171,6 +159,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            margin-bottom: 40px;
         }
 
         .project-card:hover {
@@ -242,43 +231,6 @@
             content: "⚡";
             position: absolute;
             left: -20px;
-            color: #64ffda;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            padding: 20px;
-            border: 1px solid rgba(100, 255, 218, 0.3);
-        }
-
-        .skill-category h4 {
-            color: #bb86fc;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            color: #b0bec5;
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .skill-category li::before {
-            content: "▶";
-            position: absolute;
-            left: 0;
             color: #64ffda;
         }
 
@@ -400,29 +352,10 @@
                 padding: 20px;
             }
             
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .featured-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .category-nav {
                 flex-direction: column;
                 align-items: center;
             }
-        }
-
-        .profile-pic {
-            width: 130px;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #64ffda;
-            box-shadow: 0 4px 24px rgba(100,255,218,0.15), 0 1.5px 8px rgba(0,0,0,0.15);
-            margin-bottom: 5px;
-            background: #16213e;
         }
 
         .red-team .project-card {
@@ -438,232 +371,27 @@
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="nav-content">
-            <a href="#home" class="nav-logo">Tyler Beles</a>
+            <a href="newPort.html" class="nav-logo">Tyler Beles</a>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
-                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
-                <li><a href="#featured-projects" class="nav-link" data-section="featured-projects">Projects</a></li>
-                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
-                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
-                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+                <li><a href="newPort.html" class="nav-link">← Back to Home</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <!-- Home Section -->
-        <section id="home" class="section active">
+        <!-- Projects Header -->
+        <section class="section">
             <header>
-                <div class="header-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                    <img src="profile.jpg" alt="Profile picture of Tyler Beles" class="profile-pic">
-                    <h1>Tyler Beles</h1>
-                    <h2>Cybersecurity Student</h2>
-                    <p>Pursuing a Computer Science degree with a focus on cybersecurity at UW–Madison. Passionate about malware analysis, machine learning security applications, and protecting digital communities. Seeking cybersecurity internship opportunities to apply technical skills in real-world security challenges.</p>
+                <div class="header-content">
+                    <h1>Projects</h1>
+                    <h2>Cybersecurity & Development Portfolio</h2>
+                    <p>Explore my hands-on cybersecurity projects spanning both defensive and offensive security techniques. These projects demonstrate practical experience in threat detection, malware analysis, network security, and ethical hacking methodologies.</p>
                 </div>
             </header>
 
-            
-
-            <div class="content-section" id="about">
-                <h3>About Me</h3>
-                <div class="project-card">
-                    <div style="color: #b0bec5;">
-                        <p><strong style="color: #64ffda;">Academic Focus:</strong> Computer Science major at UW–Madison, specializing in cybersecurity, malware analysis, and secure software development.</p>
-                        <p style="margin-top: 15px;"><strong style="color: #64ffda;">Areas of Interest:</strong></p>
-                        <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>Malware Detection & Analysis</li>
-                            <li>Machine Learning for Security</li>
-                            <li>Network Security & Threat Intelligence</li>
-                            <li>Secure Software Engineering</li>
-                            <li>Cybersecurity in Gaming & Digital Communities</li>
-                        </ul>
-                        <p style="margin-top: 20px; font-style: italic;">
-                            "Passionate about leveraging technology to build safer digital environments and protect communities from emerging cyber threats."
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-section" id="featured-projects">
-                <h3>🌟 Featured Projects</h3>
-                <div class="featured-grid">
-                    <div class="project-card clickable-card" data-section="cybersecurity-projects" data-category="blue-team">
-                        <div class="project-title">Minecraft RAT Scanner</div>
-                        <div class="project-description" style="min-height: 80px;">
-                            Advanced malware detection system for Minecraft mods using machine learning and automated security analysis. Deployed to ECS Security Platform with enterprise-grade infrastructure.
-                        </div>
-                        
-                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
-                        <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; font-size: 1.1em; color: #b0bec5; min-height: 150px;">
-                            <li>AI-Powered Detection</li>
-                            <li>Real-time Analysis</li>
-                            <li>Decompilation Engine</li>
-                            <li>Threat Intelligence</li>
-                            <li>Web Interface</li>
-                            <li>Enterprise Security</li>
-                        </ul>
-                        
-                        <h4 style="color: #64ffda; margin-top: 20px; margin-bottom: 10px;">Technologies Used:</h4>
-                        <div class="tech-stack" style="margin-bottom: 20px;">
-                            <span class="tech-tag">Python FastAPI</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">AWS ECS Fargate</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">GitHub Actions</span>
-                            <span class="tech-tag">AWS Secrets Manager</span>
-                            <span class="tech-tag">Procyon Decompiler</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card clickable-card" data-section="cybersecurity-projects" data-category="blue-team">
-                        <div class="project-title">Homelab Security Project</div>
-                        <div class="project-description" style="min-height: 80px;">
-                            Virtual network security lab implementing pfSense firewall with Snort IDS/IPS integration. Features custom rule creation, penetration testing validation, and comprehensive network monitoring.
-                        </div>
-                        
-                        <h4 style="color: #bb86fc; margin-top: 20px; margin-bottom: 10px;">Key Features:</h4>
-                        <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; font-size: 1.1em; color: #b0bec5; min-height: 150px;">
-                            <li>pfSense Firewall Configuration</li>
-                            <li>Snort IDS/IPS Integration</li>
-                            <li>Custom Rule Development</li>
-                            <li>Multi-VM Network Architecture</li>
-                            <li>Penetration Testing Validation</li>
-                            <li>Real-time Alert Monitoring</li>
-                        </ul>
-                        
-                        <h4 style="color: #64ffda; margin-top: 20px; margin-bottom: 10px;">Technologies Used:</h4>
-                        <div class="tech-stack" style="margin-bottom: 20px;">
-                            <span class="tech-tag">pfSense</span>
-                            <span class="tech-tag">Snort IDS/IPS</span>
-                            <span class="tech-tag">Ubuntu Desktop</span>
-                            <span class="tech-tag">VirtualBox</span>
-                            <span class="tech-tag">Kali Linux</span>
-                            <span class="tech-tag">Custom Snort Rules</span>
-                            <span class="tech-tag">Network Configuration</span>
-                            <span class="tech-tag">Nmap</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="#cybersecurity-projects" class="github-link nav-link" data-section="cybersecurity-projects">View All Projects</a>
-                </div>
-            </div>
-
-            <div class="content-section" id="experience">
-                <h3>💼 Professional Experience</h3>
-                <div class="experience-container">
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <h4 style="color: #64ffda; font-size: 1.3em; margin-bottom: 5px;">DevOps Engineer</h4>
-                            <p style="color: #bb86fc; font-weight: 500; margin-bottom: 5px;">Madtown Fitness LLC • Madison, WI</p>
-                            <p style="color: #b0bec5; font-size: 0.95em; margin-bottom: 15px;">June 2024 – Present</p>
-                        </div>
-                        <ul style="color: #b0bec5; margin-left: 20px; line-height: 1.6;">
-                            <li>Built and deployed full-stack web application using React frontend with JavaScript backend on Google Cloud Platform</li>
-                            <li>Configured enterprise-grade email security protocols (DKIM, SPF, DMARC) and Google Workspace administration</li>
-                            <li>Designed AI-powered n8n workflows for automated email management and debt collection processes</li>
-                            <li>Implemented secure API protocols and authentication systems for scalable deployment infrastructure</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-item" style="margin-top: 25px;">
-                        <div class="experience-header">
-                            <h4 style="color: #64ffda; font-size: 1.3em; margin-bottom: 5px;">IT Support Specialist & Youth Apprentice</h4>
-                            <p style="color: #bb86fc; font-weight: 500; margin-bottom: 5px;">Evansville Community School District • Evansville, WI</p>
-                            <p style="color: #b0bec5; font-size: 0.95em; margin-bottom: 15px;">July 2022 – August 2023</p>
-                        </div>
-                        <ul style="color: #b0bec5; margin-left: 20px; line-height: 1.6;">
-                            <li>Managed network infrastructure including access points and server racks across district buildings</li>
-                            <li>Developed PowerShell scripts to automate student archiving in Google Classroom systems</li>
-                            <li>Provided technical support for 500+ Chromebooks and delivered remote troubleshooting for hardware/software issues</li>
-                            <li>Documented support tickets and conducted training sessions for students and staff on device management</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-section" id="skills">
-                <h3 style="text-align: center;">Technical Skills</h3>
-                <div class="skills-grid" style="justify-content: center; align-items: center; max-width: 1000px; margin: 0 auto;">
-                    <div class="skill-category">
-                        <h4>💻 Programming Languages</h4>
-                        <ul>
-                            <li>Python (Advanced)</li>
-                            <li>JavaScript</li>
-                            <li>TypeScript</li>
-                            <li>PowerShell</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>🚀 Frameworks & Libraries</h4>
-                        <ul>
-                            <li>React & Next.js</li>
-                            <li>FastAPI</li>
-                            <li>Tailwind CSS</li>
-                            <li>Scikit-learn</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>☁️ Cloud & DevOps</h4>
-                        <ul>
-                            <li>AWS ECS Fargate</li>
-                            <li>Google Cloud Platform</li>
-                            <li>Docker</li>
-                            <li>GitHub Actions</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>🔒 Security Tools</h4>
-                        <ul>
-                            <li>pfSense & Snort IDS/IPS</li>
-                            <li>Kali Linux & Nmap</li>
-                            <li>Wireshark</li>
-                            <li>Penetration Testing</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>🔍 Malware Analysis</h4>
-                        <ul>
-                            <li>Static Analysis Techniques</li>
-                            <li>JAR File Structure Analysis</li>
-                            <li>Behavioral Pattern Recognition</li>
-                            <li>Threat Intelligence</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>🌐 Network Security</h4>
-                        <ul>
-                            <li>Network Configuration</li>
-                            <li>Custom Snort Rules</li>
-                            <li>Traffic Analysis</li>
-                            <li>Firewall Management</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-section" id="contact">
-                <h3>Contact Information</h3>
-                <div class="contact-info">
-                    <p>Email: <a href="mailto:TylerBeles47@gmail.com">tylerbeles47@gmail.com</a></p>
-                    <p>LinkedIn: <a href="https://www.linkedin.com/in/tyler-beles">linkedin.com/in/tyler-beles</a></p>
-                    <p>GitHub: <a href="https://github.com/TylerBeles47">github.com/yTylerBeles47</a></p>
-                    <p style="margin-top: 20px; font-style: italic;">
-                        "Passionate about leveraging technology to build safer digital environments and protect communities from emerging cyber threats."
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Personal Cybersecurity Projects Section -->
-        <section id="cybersecurity-projects" class="section">
-            <div class="content-section">
+            <!-- Projects Section -->
+            <div class="content-section" id="cybersecurity-projects">
                 <h3>🔐 Projects</h3>
-                <p style="color: #b0bec5; margin-bottom: 20px; font-size: 1.1em;">
-                    Explore my hands-on cybersecurity projects spanning both defensive and offensive security techniques. These projects demonstrate practical experience in threat detection, malware analysis, network security, and ethical hacking methodologies.
-                </p>
                 
                 <!-- Category Navigation for Projects -->
                 <div class="category-nav">
@@ -985,107 +713,30 @@
                 </div>
             </div>
         </section>
+    </div>
 
-        
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        function showSection(sectionId, anchorId) {
-            // If it's a section within the home page, just scroll to it
-            if (['about', 'experience', 'skills', 'contact', 'featured-projects', 'projects-overview'].includes(sectionId)) {
-                // Ensure home section is visible and active
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.getElementById('home').classList.add('active');
+        // Smooth scrolling for navigation links (but allow normal navigation for external links)
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
                 
-                // Update nav links - keep the clicked nav item active for home page sections
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-                
-                // Set the appropriate nav link as active
-                const navLink = document.querySelector(`[data-section="${sectionId}"]`);
-                if (navLink) {
-                    navLink.classList.add('active');
-                } else {
-                    // For sections not in main nav, set Home as active
-                    document.querySelector('[data-section="home"]').classList.add('active');
-                }
-                
-                // Scroll to the target element within the home page
-                setTimeout(() => {
-                    const targetElement = document.getElementById(sectionId);
+                // Only prevent default for internal links (starting with #)
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+
                     if (targetElement) {
-                        // For better visibility, use 'center' positioning for contact section
-                        const scrollBlock = sectionId === 'contact' ? 'center' : 'start';
-                        targetElement.scrollIntoView({ behavior: 'smooth', block: scrollBlock });
-                        // Offset for fixed navbar - wait for scroll to complete
-                        setTimeout(() => {
-                            if (sectionId !== 'contact') {
-                                window.scrollBy({ top: -80, left: 0, behavior: 'smooth' });
-                            }
-                        }, 300);
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Adjust for fixed nav
+                            behavior: 'smooth'
+                        });
                     }
-                }, 100);
-                return;
-            }
-            
-            // For other sections (projects, cybersecurity-projects, other-projects), switch sections
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            // Remove active class from all nav links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            // Show target section and activate nav link
-            const targetSection = document.getElementById(sectionId);
-            const targetLink = document.querySelector(`[data-section="${sectionId}"]`);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-            if (targetLink) {
-                targetLink.classList.add('active');
-            }
-            // Scroll to anchor if provided
-            if (anchorId) {
-                setTimeout(() => {
-                    const anchorElem = document.getElementById(anchorId);
-                    if (anchorElem) {
-                        anchorElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        // Offset for fixed navbar
-                        setTimeout(() => {
-                            window.scrollBy({ top: -80, left: 0, behavior: 'smooth' });
-                        }, 300);
-                    }
-                }, 200);
-            } else {
-                // Always scroll to top of section
-                setTimeout(() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 100);
-            }
-        }
-
-        function handleNavClick(e) {
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                // Support both #section and #section|anchor
-                const hash = href.substring(1);
-                if (hash.includes('|')) {
-                    const [sectionId, anchorId] = hash.split('|');
-                    showSection(sectionId, anchorId);
-                } else {
-                    showSection(hash, null);
                 }
-            }
-        }
-
-        // Attach to ALL nav, quick nav, and feature links
-        document.querySelectorAll('.nav-link, .category-btn, .github-link').forEach(link => {
-            link.addEventListener('click', handleNavClick);
+                // For external links like "newPort.html", let the browser handle it normally
+            });
         });
 
         // Add typing effect to the main title
@@ -1119,24 +770,6 @@
             section.style.transform = 'translateY(30px)';
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
-        });
-
-        // Make featured project cards clickable
-        document.querySelectorAll('.clickable-card').forEach(card => {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', function() {
-                const section = this.getAttribute('data-section');
-                const category = this.getAttribute('data-category');
-                if (section) {
-                    showSection(section, null);
-                    // If clicking on a featured project, filter to its category
-                    if (category && section === 'cybersecurity-projects') {
-                        setTimeout(() => {
-                            filterCyberSecProjects(category);
-                        }, 100);
-                    }
-                }
-            });
         });
 
         // Projects filtering functionality
